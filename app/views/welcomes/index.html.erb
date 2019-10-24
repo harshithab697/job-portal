@@ -36,7 +36,6 @@
 </head>
 
 <body>
-
   <!--==========================
   Header
   ============================-->
@@ -51,9 +50,9 @@
 
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li><a href="#intro">Join</a></li>
-          <li><a href="#intro">Recruiter Login</a></li>
-          <li><a href="#intro">Developer Login</a></li>
+          <li><%= link_to "Join",welcomes_register_path %></li>
+          <li><%= link_to "Recruiter Login",new_recruiter_session_path%></li>
+          <li><%= link_to "Job Seeker Login",new_job_seeker_session_path%></li>
         </ul>
       </nav><!-- .main-nav -->
       

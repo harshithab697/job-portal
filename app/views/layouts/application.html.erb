@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <nav>
+      Navigation
+      <% if recruiter_signed_in? %>
+          <%= link_to 'Log out', destroy_recruiter_session_path, method: :delete %>
+      <% end %>
+      <% if job_seeker_signed_in? %>
+          <%= link_to 'Log out', destroy_job_seeker_session_path, method: :delete %>
+      <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>
