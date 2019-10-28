@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 	devise_for :recruiters
   devise_for :job_seekers
   namespace :dashboard do
+    get 'profiles/show'
+    get 'profiles/edit'
+    patch 'profiles/update'
     # authenticated :job_seeker do
     #     # resources :jobs, module: "job_seeker", :only => [:show, :index]
     # end
