@@ -1,3 +1,16 @@
-
-<li><%= link_to "Register as recruiter",new_recruiter_registration_path %></li>
-<li><%= link_to "Register as Job Seeker", new_job_seeker_registration_path%></li>
+<div class="container d-flex justify-content-center align-items-center" style= "height:100vh" >
+	<div class = "d-flex">
+		<a href="<%= new_recruiter_registration_path %>">
+		  <div class='simple-card'>
+				<%= image_tag("/assets/research.svg", class: "rounded card-custom float-left img-fluid") %>
+				<p>Recruiter</p>
+		  </div>
+     </a>
+     <a href="<%=  new_job_seeker_registration_path %>">
+		  <div class='simple-card'>
+				<%= image_tag("/assets/thinking.svg", class: "rounded card-custom float-left img-fluid") %>
+				<p>Job Seeker</p>
+		  </div>
+     </a>
+	</div>
+</div>
