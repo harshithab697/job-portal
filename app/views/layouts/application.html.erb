@@ -2,6 +2,18 @@
 <html>
   <head>
     <title>TheRubyRails</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="/assets/favicon.png" rel="icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+    <!-- Main Stylesheet File -->
+    <link href="/assets/style.css" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,15 +22,51 @@
   </head>
 
   <body>
-    <nav>
-      Navigation
-      <% if recruiter_signed_in? %>
-          <%= link_to 'Log out', destroy_recruiter_session_path, method: :delete %>
-      <% end %>
-      <% if job_seeker_signed_in? %>
-          <%= link_to 'Log out', destroy_job_seeker_session_path, method: :delete %>
-      <% end %>
-    </nav>
+    <!--==========================
+  Header
+  ============================-->
+    <header id="header" class="fixed-top">
+      <div class="container-fluid">
+
+        <div class="logo float-left">
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
+          <a href="/" class="scrollto"><img src="/assets/logo.png" alt="" class="img-fluid"></a>
+        </div>
+
+        <nav class="main-nav float-right d-none d-lg-block">
+          <ul>
+            <% unless current_user %>
+              <li><%= link_to "Join",welcomes_register_path %></li>
+              <li><%= link_to "Recruiter Login",new_recruiter_session_path%></li>
+              <li><%= link_to "Job Seeker Login",new_job_seeker_session_path%></li>
+            <% end %>
+            <% if recruiter_signed_in? %>
+              <%= link_to 'Log out', destroy_recruiter_session_path, method: :delete %>
+            <% end %>
+            <% if job_seeker_signed_in? %>
+              <%= link_to 'Log out', destroy_job_seeker_session_path, method: :delete %>
+            <% end %>
+          </ul>
+        </nav><!-- .main-nav -->
+        
+      </div>
+    </header><!-- #header -->
     <%= yield %>
+    <!--==========================
+    Footer
+  ============================-->
+    <footer id="footer">
+
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong>Progton Technologies</strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+        </div>
+      </div>
+    </footer><!-- #footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   </body>
 </html>
