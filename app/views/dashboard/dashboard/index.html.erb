@@ -1,5 +1,5 @@
-<% if current_user.to_s.match(/JobSeeker/) %>
-	<p>JOB SEEKER</p>
-<% elsif current_user.to_s.match(/Recruiter/)%>
-	<p>RECRUITER</p>
-<%end%>
+<% if current_user.type == "JobSeeker" %>
+	
+	<% elsif current_user.type == "Recruiter" %>
+	
+<% end %>

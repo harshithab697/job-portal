@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-	devise_for :recruiters
+  devise_for :recruiters
   devise_for :job_seekers
   namespace :dashboard do
     get 'profiles/show'
