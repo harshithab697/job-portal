@@ -1,2 +1,54 @@
-<h1>Dashboard::Profiles#show</h1>
-<p>Find me in app/views/dashboard/profiles/show.html.erb</p>
+
+<h4> My Profile </h4><br />
+<% if current_user.instance_of? JobSeeker %>
+	<p>
+	  <strong>Name:</strong>
+	  <%= current_user.name %>
+	</p>
+
+	<p>
+	  <strong>Qualification:</strong>
+	  <%= current_user.qualification %>
+	</p>
+
+	<p>
+	  <strong>skills:</strong>
+	  <%= current_user.skills %>
+	</p>
+
+  <p>
+	  <strong>dob:</strong>
+	  <%= current_user.dob %>
+	</p>
+
+
+	
+
+<%end%>
+
+
+<% if current_user.instance_of? Recruiter %>
+  <p>
+	  <strong>Company name:</strong>
+	  <%= current_user.cname %>
+	</p>
+
+	<p>
+	  <strong>description:</strong>
+	  <%= current_user.description %>
+	</p>
+
+	<p>
+	  <strong>Company location:</strong>
+	  <%= current_user.clocation %>
+	</p>
+
+	<p>
+	  <strong>Company size:</strong>
+	  <%= current_user.csize %>
+	</p>
+
+<%end%><br />
+
+
+<%= link_to 'Edit', dashboard_profiles_edit_path(current_user) %>

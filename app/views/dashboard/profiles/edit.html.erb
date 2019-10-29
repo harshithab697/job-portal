@@ -1,2 +1,58 @@
-<h1>Dashboard::Profiles#edit</h1>
-<p>Find me in app/views/dashboard/profiles/edit.html.erb</p>
+<%= form_for :current_user, url: posts_path do |form|%>
+ 
+
+	<% if current_user.instance_of? JobSeeker %>
+		<h1>Edit your profile</h1>
+			<div class="field">
+				<%= form.label :name %>
+				<%= form.text_field :name %>
+			</div>
+
+			<div class="field">
+				<%= form.label :qualification %>
+				<%= form.text_field :qualification %>
+			</div>
+
+			<div class="field">
+				<%= form.label :skills %>
+				<%= form.text_area :skills %>
+			</div>
+
+			<div class="field">
+				<%= form.label :dob %>
+				<%= form.text_field :dob %>
+			</div>
+
+			<div class="field">
+				<%= form.label :experiance %>
+				<%= form.text_field :experiance %>
+			</div>
+
+	<% elsif current_user.instance_of? Recruiter %>
+		<h1>Edit your profile</h1>
+
+			<div class="field">
+				<%= form.label :c_name %>
+				<%= form.text_field :cname %>
+			</div>
+
+			<div class="field">
+				<%= form.label :description %>
+				<%= form.text_area :description %>
+			</div>
+
+			<div class="field">
+				<%= form.label :c_location %>
+				<%= form.text_field :clocation %>
+			</div>
+
+			<div class="field">
+				<%= form.label :c_size%>
+				<%= form.text_field :csize %>
+			</div>	
+	<% end %>
+		<div class="actions">
+			<%= form.submit %>
+		</div>
+<% end %>
+<%= link_to 'Show', dashboard_profiles_show_path %>

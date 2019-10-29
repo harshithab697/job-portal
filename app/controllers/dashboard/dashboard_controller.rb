@@ -1,8 +1,9 @@
 class Dashboard::DashboardController < ApplicationController
   def index
-  	if current_user.type == "JobSeeker"
-	
-		elsif current_user.type == "Recruiter"
+  	byebug
+  	if current_user.instance_of? JobSeeker 
+
+		elsif current_user.instance_of? JobSeeker 
 			
 		end
   end
