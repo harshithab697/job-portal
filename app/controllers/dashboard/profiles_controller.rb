@@ -3,13 +3,13 @@ class Dashboard::ProfilesController < ApplicationController
 	end
 
 	def edit
-		@current_user = current_user.find(params[:id])
+		@current_user = current_user
 	
 	end
 
 	def update
 		respond_to do |format|
-			if current_user.update(user_params)
+			if current_user.update(user_params	)
 				format.html {redirect_to current_user, notice: 'your profile is updated successfully.' }
 			else
 				format.html { render :edit }
@@ -20,7 +20,8 @@ end
 private
 
 	def user_params 
-		params.require(:profile).permit(:name, :qualification, :skills, :dob, :experience, :c_name, :description, :c_location ,:c_size)
+		byebug
+		params.require(@current_user).permit(:name, :qualification, :skills, :dob, :experience)
   end
 
 	

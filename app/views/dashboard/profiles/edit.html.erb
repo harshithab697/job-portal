@@ -1,4 +1,5 @@
-<%= form_for :current_user, url: posts_path do |form|%>
+<br/><br/><br/><br/><br/><br/>
+<%= form_for :current_user, url: {controller: "profiles", action: "update"}, method: :patch do |form|%>
  
 
 	<% if current_user.instance_of? JobSeeker %>
@@ -24,8 +25,8 @@
 			</div>
 
 			<div class="field">
-				<%= form.label :experiance %>
-				<%= form.text_field :experiance %>
+				<%= form.label :experience %>
+				<%= form.text_field :experience %>
 			</div>
 
 	<% elsif current_user.instance_of? Recruiter %>
