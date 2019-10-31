@@ -52,7 +52,24 @@
         
       </div>
     </header><!-- #header -->
+
+   
+ <div class="container-fluid d-flex flex-row p-0">
+  <% if user_signed_in? %>
+  <br>
+   <br>
+
+    <div class="sidenav" >
+     <center> <%= link_to "My profile", dashboard_profiles_show_path %></center>
+  
+</div>
+
+<!-- Page content -->
+
+<%end%> 
     <%= yield %>
+ </div>
+
     <!--==========================
     Footer
   ============================-->
