@@ -3,26 +3,27 @@ class Dashboard::ProfilesController < ApplicationController
 	end
 
 	def edit
-		@current_user = current_user
-	
+		@user=current_user	
 	end
 
 	def update
+		@user = current_user
 		respond_to do |format|
-			if current_user.update(user_params	)
-				format.html {redirect_to current_user, notice: 'your profile is updated successfully.' }
+			if @user.update(user_params)
+				format.html {redirect_to dashboard_profiles_show_url, notice: 'your profile is updated successfully.' }
 			else
 				format.html { render :edit }
 	    end 
-end
+		end
 end
 
 private
 
-	def user_params 
-		byebug
-		params.require(@current_user).permit(:name, :qualification, :skills, :dob, :experience)
-  end
-
-	
+	def user_params
+		if current_user.instance_of?JobSeeker		
+			params.require(:job_seeker).permit(:name, :qualification, :skills, :dob, :experience)
+		else
+			params.require(:recruiter).permit(:cname, :description, :clocation, :csize)
+		end
+  end	
 end
