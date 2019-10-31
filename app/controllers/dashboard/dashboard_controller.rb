@@ -6,5 +6,6 @@ class Dashboard::DashboardController < ApplicationController
 		elsif current_user.instance_of? JobSeeker 
 			
 		end
+
   end
 end

@@ -1,4 +1,6 @@
 
+	<div class="d-flex flex-column  justify-content-center align-items-center flex-1" style="flex: 1">
+ 
 <h4> My Profile </h4><br />
 <% if current_user.instance_of? JobSeeker %>
 	<p>
@@ -20,9 +22,6 @@
 	  <strong>dob:</strong>
 	  <%= current_user.dob %>
 	</p>
-
-
-	
 
 <%end%>
 
@@ -52,3 +51,5 @@
 
 
 <%= link_to 'Edit', dashboard_profiles_edit_path(current_user) %>
+</div>
+
