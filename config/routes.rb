@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :jobs
   devise_for :recruiters
   devise_for :job_seekers
   namespace :dashboard do
