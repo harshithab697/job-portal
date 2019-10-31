@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_113911) do
+ActiveRecord::Schema.define(version: 2019_10_31_125342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "job_applications", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "job_id", null: false
+    t.bigint "job_seeker_id", null: false
+    t.index ["job_id"], name: "index_job_applications_on_job_id"
+    t.index ["job_seeker_id"], name: "index_job_applications_on_job_seeker_id"
+  end
 
   create_table "job_seekers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -39,6 +48,8 @@ ActiveRecord::Schema.define(version: 2019_10_31_113911) do
     t.string "job_location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "recruiter_id", null: false
+    t.index ["recruiter_id"], name: "index_jobs_on_recruiter_id"
   end
 
   create_table "recruiters", force: :cascade do |t|
@@ -57,4 +68,7 @@ ActiveRecord::Schema.define(version: 2019_10_31_113911) do
     t.index ["reset_password_token"], name: "index_recruiters_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "job_applications", "job_seekers"
+  add_foreign_key "job_applications", "jobs"
+  add_foreign_key "jobs", "recruiters"
 end
