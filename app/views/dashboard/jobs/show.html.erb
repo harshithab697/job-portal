@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @dashboard_job.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @dashboard_job.description %>
+</p>
+
+<p>
+  <strong>Salary:</strong>
+  <%= @dashboard_job.salary %>
+</p>
+
+<p>
+  <strong>Experience:</strong>
+  <%= @dashboard_job.experience %>
+</p>
+
+<p>
+  <strong>Job location:</strong>
+  <%= @dashboard_job.job_location %>
+</p>
+
+<%= link_to 'Edit', edit_dashboard_job_path(@dashboard_job) %> |
+<%= link_to 'Back', dashboard_jobs_path %>
