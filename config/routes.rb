@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       patch 'profiles/update'
     end
 
-    authenticated :job_seekers do
+    authenticated :job_seeker do
       resources :jobs ,only: [:index, :show] 
       get 'profiles/show'
       get 'profiles/edit'
