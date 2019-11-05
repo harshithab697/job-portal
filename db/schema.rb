@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_05_074440) do
+ActiveRecord::Schema.define(version: 2019_11_05_105714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 2019_11_05_074440) do
   create_table "job_applications", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "dashboard_job_id", null: false
+    t.bigint "job_id", null: false
     t.bigint "job_seeker_id", null: false
-    t.index ["dashboard_job_id"], name: "index_job_applications_on_dashboard_job_id"
+    t.index ["job_id"], name: "index_job_applications_on_job_id"
     t.index ["job_seeker_id"], name: "index_job_applications_on_job_seeker_id"
   end
 
@@ -70,6 +70,6 @@ ActiveRecord::Schema.define(version: 2019_11_05_074440) do
   end
 
   add_foreign_key "dashboard_jobs", "recruiters"
-  add_foreign_key "job_applications", "dashboard_jobs"
+  add_foreign_key "job_applications", "dashboard_jobs", column: "job_id"
   add_foreign_key "job_applications", "job_seekers"
 end
