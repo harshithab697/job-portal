@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_11_05_105714) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
 
   create_table "dashboard_jobs", force: :cascade do |t|
     t.string "title"
@@ -26,6 +29,8 @@ ActiveRecord::Schema.define(version: 2019_11_05_105714) do
     t.bigint "recruiter_id", null: false
     t.index ["recruiter_id"], name: "index_dashboard_jobs_on_recruiter_id"
   end
+
+
 
   create_table "job_applications", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -53,6 +58,17 @@ ActiveRecord::Schema.define(version: 2019_11_05_105714) do
     t.index ["reset_password_token"], name: "index_job_seekers_on_reset_password_token", unique: true
   end
 
+  create_table "jobs", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "experience"
+    t.string "job_location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "recruiter_id", null: false
+    t.index ["recruiter_id"], name: "index_jobs_on_recruiter_id"
+  end
+
   create_table "recruiters", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -69,7 +85,9 @@ ActiveRecord::Schema.define(version: 2019_11_05_105714) do
     t.index ["reset_password_token"], name: "index_recruiters_on_reset_password_token", unique: true
   end
 
+
   add_foreign_key "dashboard_jobs", "recruiters"
   add_foreign_key "job_applications", "dashboard_jobs", column: "job_id"
   add_foreign_key "job_applications", "job_seekers"
+
 end
