@@ -3,5 +3,5 @@ class Recruiter < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-   has_many :jobs,class_name: "Dashboard::Job"
+   has_many :jobs,class_name: "Dashboard::Job",dependent: :destroy
 end

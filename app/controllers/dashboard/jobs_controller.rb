@@ -24,11 +24,12 @@ class Dashboard::JobsController < ApplicationController
   # POST /dashboard/jobs
   # POST /dashboard/jobs.json
   def create
+    
     @dashboard_job = Dashboard::Job.new(dashboard_job_params)
 
     respond_to do |format|
       if @dashboard_job.save
-        format.html { redirect_to @dashboard_job, notice: 'Job was successfully created.' }
+        format.html { redirect_to dashboard_root_url, notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @dashboard_job }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class Dashboard::JobsController < ApplicationController
   def update
     respond_to do |format|
       if @dashboard_job.update(dashboard_job_params)
-        format.html { redirect_to @dashboard_job, notice: 'Job was successfully updated.' }
+        format.html { redirect_to dashboard_root_url, notice: 'Job was successfully updated.' }
         format.json { render :show, status: :ok, location: @dashboard_job }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class Dashboard::JobsController < ApplicationController
   def destroy
     @dashboard_job.destroy
     respond_to do |format|
-      format.html { redirect_to dashboard_jobs_url, notice: 'Job was successfully destroyed.' }
+      format.html { redirect_to dashboard_root_url, notice: 'Job was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +70,6 @@ class Dashboard::JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dashboard_job_params
-      params.require(:dashboard_job).permit(:title, :description, :salary, :experience, :job_location)
+      params.require(:dashboard_job).permit(:title, :description, :salary, :experience, :job_location, :recruiter_id)
     end
 end

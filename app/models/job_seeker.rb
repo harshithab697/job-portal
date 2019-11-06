@@ -4,5 +4,5 @@ class JobSeeker < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :job_applications
-  has_many :jobs , through: :job_application,class_name: "Dashboard::Job"
+  has_many :jobs , through: :job_application,class_name: "Dashboard::Job",dependent: :destroy
 end

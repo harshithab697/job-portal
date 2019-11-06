@@ -1,0 +1,35 @@
+<% if current_user.instance_of?JobSeeker %>
+
+<% else %>
+<div class="simple" >
+	<div class="container-fluid" style="padding:20px;">
+		<div class="d-flex flex-column  justify-content-center align-items-left flex-1" >
+			<%= link_to "New Job", new_dashboard_job_path , {class: "btn btn-outline-primary", style: 'width:100px;'}%>
+
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Title</th>
+						<th scope="col">Experience</th>
+						<th scope="col">Job location</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @jobs.each do |job|%>
+    			<tr>
+    				<td><%= job.title %></td>
+    				<td><%= job.experience %></td>
+    				<td><%= job.job_location %></td>
+    				<td><%= link_to "Description", dashboard_job_path(job) %></td>
+    				<td><%= link_to "Edit", edit_dashboard_job_path(job)%></td>
+    				<td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    			</tr>
+    			<% end %>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+<%end%>
