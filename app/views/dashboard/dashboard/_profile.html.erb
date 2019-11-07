@@ -1,0 +1,57 @@
+
+
+
+<% if current_user.instance_of? JobSeeker %>
+	<p>
+	  
+	  <%= current_user.name %>
+	</p>
+
+	<p>
+	  
+	  <%= current_user.email %>
+	</p>
+
+	<p>
+	  
+	  <%= current_user.qualification %>
+	</p>
+
+	<p>
+	  
+	  <%= current_user.skills %>
+	</p>
+
+  <p>
+	 
+	  <%= current_user.dob %>
+	</p>
+
+
+<% else %>
+
+  <p>
+	 <%= current_user.cname %>
+	  </p>
+  <p>
+	 <%= current_user.email %>  
+	</p>
+
+	<p>
+	  <%= current_user.description %>
+	</p>
+
+	<p>
+	  <%= current_user.clocation %>
+	</p>
+
+	<p>
+	  <strong>Company size:</strong>
+	  <%= current_user.csize %>
+	</p>
+
+<%end%>
+
+
+
+
