@@ -36,3 +36,12 @@
 	align-items: center;
 
 }
+.simple {
+position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin-left: 260px;
+    margin-top: 80px;
+  }

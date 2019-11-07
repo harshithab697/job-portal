@@ -1,0 +1,40 @@
+<% if current_user.instance_of?JobSeeker %>
+<div class="simple" >
+<div class="container-fluid" style="padding:20px;">
+	<div class="d-flex flex-column  justify-content-center align-items-left flex-1" >
+		
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Applied Jobs</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tabss">
+        <% @all_jobs.each do |all_jobs| %>
+        <%= all_jobs.title %>
+         <%end%>
+        
+      </div>
+
+
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+       <% if @applied_job.empty? %>
+       <% @all_jobs = Dashboard::Job.all %>
+     <%else%>
+        <% @applied_job.each do |apply| %>
+        <%= apply.title %>
+         <%end%>
+         <%end%>
+      </div>
+        
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<% else %>  
+
+<%end%>
