@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     end
 
     authenticated :job_seeker do
-      resources :jobs ,only: [:index, :show] 
+      resources :jobs ,only: [:index, :show, :apply] 
+      post 'jobs/apply'
       get 'profiles/show'
       get 'profiles/edit'
       patch 'profiles/update'

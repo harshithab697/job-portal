@@ -21,6 +21,15 @@ class Dashboard::JobsController < ApplicationController
   def edit
   end
 
+  def apply
+    byebug
+    respond_to do |format|
+
+      @dashboard_job.job_seekers << current_user
+      format.html{redirect_to dashboard_root_url, notice: 'Applied successfully!'}
+    end
+  end
+
   # POST /dashboard/jobs
   # POST /dashboard/jobs.json
   def create
@@ -64,6 +73,7 @@ class Dashboard::JobsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dashboard_job
+      byebug
       @dashboard_job = Dashboard::Job.find(params[:id])
     end
 

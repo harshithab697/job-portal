@@ -25,5 +25,29 @@
   <%= @dashboard_job.job_location %>
 </p>
 
+<p>
+    <strong>Company name:</strong>
+    <%= a_job.recruiter.cname %>
+  </p>
+
+  <p>
+    <strong>description:</strong>
+    <%= a_job.recruiter.description %>
+  </p>
+
+  <p>
+    <strong>Company location:</strong>
+    <%= a_job.recruiter.clocation %>
+  </p>
+
+  <p>
+    <strong>Company size:</strong>
+    <%= @a_job.recruiter.csize %>
+  </p>
+
+
+
+
+
 <%= link_to 'Edit', edit_dashboard_job_path(@dashboard_job) %> |
 <%= link_to 'Back', dashboard_jobs_path %>

@@ -1,8 +1,9 @@
 <% if current_user.instance_of?JobSeeker %>
+
 <div class="simple" >
-<div class="container-fluid" style="padding:20px;">
-	<div class="d-flex flex-column  justify-content-center align-items-left flex-1" >
-		
+  <div class="container-fluid" style="padding:20px;">
+   <div class="d-flex flex-column  justify-content-center align-items-left flex-1" >
+
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All Jobs</a>
@@ -13,28 +14,76 @@
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tabss">
-        <% @all_jobs.each do |all_jobs| %>
-        <%= all_jobs.title %>
-         <%end%>
-        
-      </div>
+        <div class="row">
+      <% @all_jobs.each do |a_job| %>
+          <div class="col-sm-6 mb-3 ">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title"><%= a_job.recruiter.cname %></h4>
+                <p class="card-text"><%= a_job.description %></p>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample<%= a_job.id %>" aria-expanded="false" aria-controls="collapseExample<%= a_job.id %>">Show more</button>
+                <div class="collapse" id="collapseExample<%= a_job.id %>">
+                  <p>
+                    <strong>Salary:</strong>
+                    <%= a_job.salary %>
+                  </p>
 
+                  <p>
+                    <strong>Experience:</strong>
+                    <%= a_job.experience %>
+                  </p>
 
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-       <% if @applied_job.empty? %>
-       <% @all_jobs = Dashboard::Job.all %>
-     <%else%>
-        <% @applied_job.each do |apply| %>
-        <%= apply.title %>
-         <%end%>
-         <%end%>
-      </div>
-        
+                  <p>
+                    <strong>Job location:</strong>
+                    <%= a_job.job_location %>
+                  </p>
+
+                  <p>
+                    <strong>Company name:</strong>
+                    <%= a_job.recruiter.cname %>
+                  </p>
+
+                  <p>
+                    <strong>description:</strong>
+                    <%= a_job.recruiter.description %>
+                  </p>
+
+                    <p>
+                      <strong>Company location:</strong>
+                      <%= a_job.recruiter.clocation %>
+                    </p>
+
+                    <p>
+                      <strong>Company size:</strong>
+                      <%= a_job.recruiter.csize %>
+                    </p>
+                    <!-- <button class="btn btn-primary float-right" type="button" data-target="#collapseExample<%= a_job.id %>" aria-expanded="false" aria-controls="collapseExample<%= a_job.id %>">Apply job </button> -->
+                    <%= link_to "Apply",  dashboard_jobs_apply_path(a_job) %>
+                </div>
+              </div>
+            </div>
+          </div>
+      <%end%>
+        </div>
     </div>
-  </div>
+
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+         <% if @applied_job.empty? %>
+         <strong> applied jobs not found, please apply</strong>
+         <%else%>
+         <% @applied_job.each do |apply| %>
+         <%= apply.title %>
+         <%end%>
+         <%end%>
+       </div>
+
+     </div>
+   </div>
+ </div>
 </div>
-</div>
-</div>
+
+
+
 <% else %>  
 
 <%end%>
