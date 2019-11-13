@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :recruiters
   devise_for :job_seekers
-  resources :jobs 
+  resources :jobs
+  match "apply_job", to: 'jobs#apply', via: :patch
   namespace :dashboard do
     
     authenticated :recruiter do

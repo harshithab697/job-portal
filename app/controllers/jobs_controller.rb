@@ -13,6 +13,11 @@ class JobsController < ApplicationController
   def show
   end
 
+  def apply
+    Job.find(params[:format]).job_seekers << current_job_seeker
+    redirect_to '/', notice: 'Applied successfully!'
+  end
+
   # GET /jobs/new
   def new
     @job = Job.new
