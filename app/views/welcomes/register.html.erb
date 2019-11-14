@@ -1,17 +1,17 @@
 <div class="container d-flex justify-content-center align-items-center" style= "height:100vh" >
 	<div class = "d-flex">
-		<a href="<%= new_recruiter_registration_path %>">
-		  <div class='simple-card'>
-				<%= image_tag("/assets/research.svg", class: "rounded card-custom float-left img-fluid") %>
+		<div class='simple-card'>
+			<a href="<%= new_recruiter_registration_path %>">
+				<%= image_tag("/assets/research.svg", class: "rounded card-custom img-fluid") %>
 				<p>Recruiter</p>
-		  </div>
-     </a>
-     <a href="<%=  new_job_seeker_registration_path %>">
-		  <div class='simple-card'>
-				<%= image_tag("/assets/thinking.svg", class: "rounded card-custom float-left img-fluid") %>
+      </a>
+		</div>
+	  <div class='simple-card'>
+      <a href="<%=  new_job_seeker_registration_path %>">
+				<%= image_tag("/assets/thinking.svg", class: "rounded card-custom img-fluid") %>
 				<p>Job Seeker</p>
-		  </div>
-     </a>
+      </a>
+	  </div>
 	</div>
 </div>
 

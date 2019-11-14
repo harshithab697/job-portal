@@ -68,6 +68,14 @@ display: block;
 z-index: -1;
 }
 
+.sidenav-wrapper {
+  position: fixed; 
+  width: 250px;
+  display: flex;
+  z-index: 22;
+  justify-content: center;
+}
+
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
 color: #f1f1f1;
