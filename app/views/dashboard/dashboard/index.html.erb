@@ -16,7 +16,7 @@
 				<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tabss">
 					<div class="row">
 						<% @all_jobs.each do |job| %>
-						<div class="col-sm-7 mb-3 ">
+						<div class="col-sm-11 mb-3">
 							<div class="card shadow p-3 mb-5 bg-white rounded">
 								<div class="card-body">
 									<h4 class="card-title"><%= Job.find(job).recruiter.cname %></h4>
@@ -59,7 +59,7 @@
 											<strong>Company size:</strong>
 											<%= Job.find(job).recruiter.csize %>
 										</p>
-										<%= link_to "Apply", apply_job_path(job), method: :patch, class: "btn btn-primary" %>
+										<%= link_to "Apply", apply_job_path(job), method: :patch, class: "btn btn-primary float-right" %>
 									</div>
 								</div>
 							</div>
@@ -71,7 +71,7 @@
 				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 					<% @applied_job.each do |applied_job| %>
 						<% job = Job.find(applied_job) %>
-					<div class="col-sm-7 mb-3 ">
+					<div class="col-sm-11 mb-3 ">
 						<div class="card shadow p-3 mb-5 bg-white rounded">
 							<div class="card-body">
 								<h4 class="card-title"><%= job.recruiter.cname %></h4>
