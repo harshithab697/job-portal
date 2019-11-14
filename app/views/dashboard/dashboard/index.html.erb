@@ -19,7 +19,7 @@
 								<div class="col-sm-7 mb-3 ">
 									<div class="card shadow p-3 mb-5 bg-white rounded">
 										<div class="card-body">
-											<h4 class="card-title"><%= link_to "#{Job.find(job).recruiter.cname}", dashboard_profiles_show_path %></h4>
+											<h4 class="card-title"><%= Job.find(job).recruiter.cname %></h4>
 											<p class="card-text"><%= Job.find(job).description %></p>
 											<button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample<%= job %>" aria-expanded="false" aria-controls="collapseExample<%= job %>">Show more</button>
 											<br/>

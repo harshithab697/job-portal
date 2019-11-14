@@ -55,10 +55,8 @@
           <div class ="row max-height">
             <!--SIDEBAR-->
             <% if user_signed_in? %>
-            <br>
-             <br>  
               <div class="sidenav" >
-              <center> <%= link_to "My profile", dashboard_profiles_show_path %></center>
+              <div class='sidenav-wrapper'> <%= link_to "My profile", dashboard_profiles_show_path %></div>
               </div>   
             <% end %> 
             <!--MAIN CONTENT-->          
