@@ -17,6 +17,7 @@ class Dashboard::DashboardController < ApplicationController
 				return @all_jobs
 			end
 		else
+			@jobs = Job.where(recruiter_id: current_recruiter.id)
 		end
   end
 end
