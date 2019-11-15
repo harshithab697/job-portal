@@ -555,3 +555,12 @@ padding: 0px 10px;
   display: flex;
   justify-content: space-between;
 }
+
+.modal-title{
+  color: #00428a;
+}
+
+.form-group{
+  font-size:1.3rem;
+}
+

@@ -20,5 +20,7 @@ class Dashboard::DashboardController < ApplicationController
 			@jobs = Job.where(recruiter_id: current_recruiter.id)
 			@job = Job.new
 		end
+
+	
   end
 end
