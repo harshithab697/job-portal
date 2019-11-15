@@ -550,3 +550,8 @@ padding: 0px 10px;
     padding: 100px 0 20px 0;
   }
 }
+
+.inline{
+  display: flex;
+  justify-content: space-between;
+}
