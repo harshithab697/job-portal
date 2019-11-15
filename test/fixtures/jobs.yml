@@ -3,13 +3,7 @@
 one:
   title: MyString
   description: MyText
-  salary: 1
-  experience: 1
-  job_location: MyString
 
 two:
   title: MyString
   description: MyText
-  salary: 1
-  experience: 1
-  job_location: MyString

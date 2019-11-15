@@ -22,7 +22,7 @@
 	  <%= current_user.dob %>
 	</p>
 
-<%end%>
+<% end %>
 
 
 <% if current_user.instance_of? Recruiter %>
@@ -46,7 +46,7 @@
 	  <%= current_user.csize %>
 	</p>
 
-<%end%><br />
+<% end %><br />
 
 
 <%= link_to 'Edit', dashboard_profiles_edit_path(current_user) %>

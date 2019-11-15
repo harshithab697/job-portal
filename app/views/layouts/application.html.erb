@@ -34,18 +34,16 @@
           <a href="/" class="scrollto"><img src="/assets/logo.png" alt="" class="img-fluid"></a>
         </div>
 
-        <nav class="main-nav float-right d-none d-lg-block">
+        <nav class="main-nav float-right">
           <ul>
-            <% unless current_user %>
-              <li><%= link_to "Join",welcomes_register_path %></li>
-              <li><%= link_to "Recruiter Login",new_recruiter_session_path%></li>
-              <li><%= link_to "Job Seeker Login",new_job_seeker_session_path%></li>
-            <% end %>
             <% if recruiter_signed_in? %>
               <%= link_to 'Log out', destroy_recruiter_session_path, method: :delete %>
-            <% end %>
-            <% if job_seeker_signed_in? %>
+            <% elsif job_seeker_signed_in? %>
               <%= link_to 'Log out', destroy_job_seeker_session_path, method: :delete %>
+            <% else %>
+              <li><%= link_to "Join", welcomes_register_path %></li>
+              <li><%= link_to "Recruiter Login", new_recruiter_session_path%></li>
+              <li><%= link_to "Job Seeker Login", new_job_seeker_session_path%></li>
             <% end %>
           </ul>
         </nav><!-- .main-nav -->
@@ -53,28 +51,26 @@
       </div>
     </header><!-- #header -->
 
-   
- <div class="container-fluid d-flex flex-row p-0">
-  <% if user_signed_in? %>
-  <br>
-   <br>
+    <div class="container-fluid d-flex flex-row p-0">
+        <div class="container-fluid max-height no-overflow">
+          <div class ="row max-height">
+            <!--SIDEBAR-->
+            <% if user_signed_in? %>
+              <div class="sidenav" >
+              <div class='sidenav-wrapper'> <%= link_to "My profile", dashboard_profiles_show_path %></div>
+              </div>   
+            <% end %> 
+            <!--MAIN CONTENT-->          
+            <%= yield %>
+          </div>
+        </div>
+    </div>
 
-    <div class="sidenav" >
-     <center> <%= link_to "My profile", dashboard_profiles_show_path %></center>
-  
-</div>
-
-<!-- Page content -->
-
-<%end%> 
-    <%= yield %>
- </div>
 
     <!--==========================
     Footer
   ============================-->
     <footer id="footer">
-
       <div class="container">
         <div class="copyright">
           &copy; Copyright <strong>Progton Technologies</strong>. All Rights Reserved
@@ -85,5 +81,7 @@
     </footer><!-- #footer -->
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
   </body>
+
 </html>
