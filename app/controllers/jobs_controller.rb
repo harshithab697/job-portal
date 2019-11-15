@@ -14,7 +14,11 @@ class JobsController < ApplicationController
   end
 
   def apply
-    Job.find(params[:format]).job_seekers << current_job_seeker
+    user = current_job_seeker
+    job = Job.find(params[:format])
+    job.job_seekers << current_job_seeker
+    UserMailer.recruiter_apply(job,user).deliver_now
+    UserMailer.jobseeker_apply(job,user).deliver_now
     redirect_to '/', notice: 'Applied successfully!'
   end
 
