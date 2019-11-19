@@ -1,6 +1,10 @@
 class Dashboard::DashboardController < ApplicationController
   def index
   	if current_user.instance_of?JobSeeker
+  		if params[:search]
+  			@jobs = Job.where("title LIKE ?","%#{params[:search]}%")
+  			return @jobs
+  		end
 			@applied_job = [ ]
 			@all_jobs = Job.pluck(:id)
 			jobs = JobApplication.where(job_seeker_id: current_user.id)
