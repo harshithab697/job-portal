@@ -17,7 +17,11 @@ class Dashboard::DashboardController < ApplicationController
 				return @all_jobs
 			end
 		else
-			@jobs = Job.where(recruiter_id: current_recruiter.id)
+			if params[:search]
+				@jobs = Job.where("title LIKE ?","%#{params[:search]}%")
+			else
+				@jobs = Job.where(recruiter_id: current_recruiter.id)
+		  end
 		end
   end
 end

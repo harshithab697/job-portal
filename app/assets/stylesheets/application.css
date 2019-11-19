@@ -16,3 +16,16 @@
  *= require util.css
  
  */
+
+
+ .search-form input {
+    font-family: "Work Sans", sans-serif;
+    font-size: 14px;
+    height: 50px;
+    background: #f4fbff;
+    border: none;
+    border-radius: 0;
+    padding: 0 30px;
+  }
+
+  
