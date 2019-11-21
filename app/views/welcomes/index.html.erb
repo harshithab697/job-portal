@@ -14,3 +14,29 @@
 
     </div>
   </section><!-- #intro -->
+
+
+   <div class="container mt-5">
+       
+        <div class="row">
+              <% Job.all.each do |job| %>
+                <div class="col-sm-3 mb-3 ">
+                  <div class="card shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-body">
+                      <h4 class="card-title"><%= job.title %></h4>
+                      <%= link_to "Show More", new_job_seeker_session_path, class: "btn btn-primary float-right" %>
+                      
+                      <br/>
+                      <div class="collapse" id="collapseExample<%= job %>">
+                        <br/>
+                       
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <%end %>
+          </div>
+   </div>
+
+                        

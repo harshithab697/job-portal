@@ -12,11 +12,11 @@
 						<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Applied Jobs</a>
 					</li>
 				</ul>
-				<div class="tab-content">
+				<div class="tab-content mt-5">
 					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tabss">
 						<div class="row">
 							<% @all_jobs.each do |job| %>
-								<div class="col-sm-7 mb-3 ">
+								<div class="col-sm-11 mb-3 ml-5">
 									<div class="card shadow p-3 mb-5 bg-white rounded">
 										<div class="card-body">
 											<h4 class="card-title"><%= Job.find(job).recruiter.cname %></h4>
@@ -71,7 +71,7 @@
 					<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 						<% @applied_job.each do |applied_job| %>
 							<% job = Job.find(applied_job) %>
-							<div class="col-sm-7 mb-3 ">
+							<div class="col-sm-11 mb-3 mr-3">
 								<div class="card shadow p-3 mb-5 bg-white rounded">
 									<div class="card-body">
 										<h4 class="card-title"><%= job.recruiter.cname %></h4>
@@ -85,7 +85,7 @@
 												<%= job.salary %>
 											</p>
 											<p>
-												<strong>Experience:</strong>
+												<strong>Experience:</strong11
 												<%= job.experience %>
 											</p>
 

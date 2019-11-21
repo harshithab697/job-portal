@@ -2,7 +2,7 @@ class Dashboard::DashboardController < ApplicationController
   def index
   	if current_user.instance_of?JobSeeker
 			@applied_job = [ ]
-			@all_jobs = Job.pluck(:id)
+			@all_jobs = Job.pluck(:id) 
 			jobs = JobApplication.where(job_seeker_id: current_user.id)
 			jobs.each do |job|
 				@applied_job << job.job_id
