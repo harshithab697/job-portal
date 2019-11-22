@@ -11,6 +11,9 @@ import 'bootstrap'
 import './src/application.scss'
 require("packs/main")
 require("packs/map-custom")
+require("packs/choices")
+require("packs/custom-materialize")
+require("packs/flatpickr")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
