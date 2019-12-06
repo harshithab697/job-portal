@@ -24,6 +24,8 @@ class Dashboard::DashboardController < ApplicationController
 				@jobs = Job.where(recruiter_id: current_user.id)
 		  end
 		end
+
+	
   end
 
   private
