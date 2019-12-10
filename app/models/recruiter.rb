@@ -9,4 +9,6 @@ class Recruiter < ApplicationRecord
   def send_email
   	UserMailer.recruiter_email(self).deliver_now		
   end
+  searchkick text_middle: [:cname, :clocation]
+
 end

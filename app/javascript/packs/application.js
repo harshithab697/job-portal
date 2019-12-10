@@ -12,6 +12,9 @@ import '../stylesheets/application'
 //import './src/application.scss'
 require("packs/main")
 require("packs/map-custom")
+require("packs/choices")
+require("packs/custom-materialize")
+require("packs/flatpickr")
 document.addEventListener("turbolinks:load", () => {
  $('[data-toggle="tooltip"]').tooltip()
  $('[data-toggle="popover"]').popover()
