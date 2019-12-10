@@ -46,7 +46,7 @@ h6 {
 }
 
 .sidenav {
-height: 100vh; /* Full-height: remove this if you want "auto" height */
+min-height:100vh; /* Full-height: remove this if you want "auto" height */
 width: 260px; /* Set the width of the sidebar */
 position: relative; /* Fixed Sidebar (stay in place on scroll) */
 z-index: 0; /* Stay on top */
@@ -424,13 +424,7 @@ padding: 0px 10px;
 }
 
 .simple {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  margin-left: 260px;
-  margin-top: 80px;
+ flex: 1;
 }
 
 /*--------------------------------------------------------------
@@ -440,10 +434,8 @@ padding: 0px 10px;
 #footer {
   background: #00428a;
   color: #eee;
-  position: absolute;
   height: 75px;
   width: 100%;
-  bottom: 0;
   font-size: 14px;
 }
 

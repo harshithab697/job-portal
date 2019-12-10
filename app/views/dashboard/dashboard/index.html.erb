@@ -119,7 +119,6 @@
 			<div class="d-flex flex-column justify-content-center align-items-left flex-1" >
 				<div class="inline">
 					<div class="font-weight-bold text-capitalize mb-3 mt-3" style="font-size: 20px;">Jobs Posted</div>
-				<!-- 	 --><!-- <p>modal</p>============= -->
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newSite">Add Job</button>
 				
 					<div class="modal fade" id="newSite" role="dialog" >
@@ -144,7 +143,6 @@
 						</div>
 					</div>
 
-				<!-- ========================= -->
 				</div>
 				<% @jobs.each do |job| %>
 					<div class="row justify-content-center align-items-center">
@@ -187,7 +185,6 @@
 											<%= Job.find(job).recruiter.clocation %>
 										</p>
         						
-<!-- <button type="button" data-toggle="modal" data-target="#jobForm">Edit</button> -->
 										<%= link_to "Edit", edit_job_path(job), :type => "button", :class => "btn btn-primary", "data-toggle" => "modal", "data-target" => "#jobEdit#{job.id}" %>
 										<%= link_to 'Delete', job, method: :delete, :type => "button", :class => "btn btn-primary", data: { confirm: 'Are you sure?' } %>
 										<div class="modal fade" id="jobEdit<%= job.id %>" role="dialog" >
