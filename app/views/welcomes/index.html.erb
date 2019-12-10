@@ -14,3 +14,52 @@
 
     </div>
   </section><!-- #intro -->
+
+<!-- //////////////// all jobs/////////////// -->
+   <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <% Job.all.each do |job| %>
+      <div class="carousel-item active">
+        <div class="container mt-5">
+          <div class="row">
+                <div class="col-sm-3 mb-3 ">
+                  <div class="card shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-body">
+                      <h4 class="card-title"><%= job.title %></h4>
+                      <%= link_to "Show More", new_job_seeker_session_path, class: "btn btn-secondary btn-sm float-right" %>
+                      <div class="collapse" id="collapseExample<%= job %>"> </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+         </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<!-- ////////////////////////////////////////////// -->
+
+
+
+
+<div class="container" style="margin-top:15px">
+    <div class="row">
+        <% Job.all.each do |job| %>
+          <div class="col-sm-3 mb-3 ">
+            <div class="card shadow p-3 mb-5 bg-white rounded ">
+              <div class="card-body">
+                <h4 class="card-title"><%= job.recruiter.cname %></h4>
+                
+                
+                
+                <div class="collapse" id="collapseExample<%= job %>"> </div>
+                                                        
+              </div>
+            </div>
+          </div>
+        <%end %>
+    </div>
+   </div>
+
+
+                        
