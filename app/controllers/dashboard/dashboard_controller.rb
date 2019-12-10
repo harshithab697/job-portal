@@ -21,7 +21,7 @@ class Dashboard::DashboardController < ApplicationController
 			if params[:search]
 				@jobs = Job.where("title LIKE ?","%#{params[:search]}%")
 			else
-				@jobs = Job.where(recruiter_id: current_recruiter.id)
+				@jobs = Job.where(recruiter_id: current_user.id)
 		  end
 		end
 
@@ -44,8 +44,8 @@ class Dashboard::DashboardController < ApplicationController
 
   def filters
     filters = []
-    filters << { term: { salary: params[:salary] } } if params[:salary].present?
-    filters << { term: { experience: params[:experience] } } if params[:experience].present?
+    filters << { range: { salary: {lte: params[:salary]} } } if params[:salary].present?
+    filters << { range: { experience: {lte: params[:experience]} } } if params[:experience].present?
     filters << { term: { job_location: params[:location] } } if params[:location].present?
     filters
   end
