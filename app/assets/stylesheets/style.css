@@ -1,4 +1,4 @@
-/*
+  /*
   Theme Name: NewBiz
   Theme URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
   Author: BootstrapMade.com
@@ -43,6 +43,23 @@ h6 {
   font-weight: 400;
   margin: 0 0 20px 0;
   padding: 0;
+}
+
+.margin5{
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.margin5 i{
+  font-size: 1.5rem;
+  margin-top: 15px;
+}
+
+.margin5 input{
+  width: 90%;
 }
 
 .form-control{

@@ -18,6 +18,7 @@ class Dashboard::DashboardController < ApplicationController
 				return @all_jobs
 			end
 		else
+      @job = Job.new
 			if params[:search]
 				@jobs = Job.where("title LIKE ?","%#{params[:search]}%")
 			else
