@@ -140,7 +140,7 @@
 						</div>
 
 					</div>
-					<% @jobs.each do |job| %>
+					<% @all_jobs.each do |job| %>
 						<div class="row justify-content-center align-items-center">
 							<div class="col-sm-10 mb-3 ">
 								<div class="card shadow p-3 mb-5 bg-white rounded">
@@ -180,28 +180,6 @@
 												<strong>Company location:</strong>
 												<%= Job.find(job).recruiter.clocation %>
 											</p>
-	        						
-											<%= link_to "Edit", edit_job_path(job), :type => "button", :class => "btn btn-primary", "data-toggle" => "modal", "data-target" => "#jobEdit#{job.id}" %>
-											<%= link_to 'Delete', job, method: :delete, :type => "button", :class => "btn btn-primary", data: { confirm: 'Are you sure?' } %>
-											<div class="modal fade" id="jobEdit<%= job.id %>" role="dialog" >
-												<div class="modal-dialog modal-lg">
-													<div class="modal-content">
-														<div class="modal-header">
-															<h1 class="modal-title">Add New Job</h1>
-															<button type="button" class="close" data-dismiss="modal">&times;</button>
-														</div>
-														<div class="modal-body pr-33">
-
-															  <%= render 'form_job', job: job  %>
-															   <%#= render :partial => 'new_job' %>
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-														</div>
-
-													</div>
-												</div>
-											</div>
 										</div>
 									</div>
 								</div>
@@ -270,78 +248,79 @@
 
 <% else %>
 
-<div class="simple" >
-	<div class="container-fluid" style="padding:20px;">
-		<div class="d-flex flex-column justify-content-center align-items-left flex-1" >
-			<form class="search-form margin5" action="/dashboard" >
-				<input type="text" class="form-control" name="search" placeholder="Search" required>
-				<button type="submit"><i class="fa fa-search searchIcon"></i></button>
-			</form>
-	
-			<div class="inline">
-				<div class="font-weight-bold text-capitalize mb-3 mt-3" style="font-size: 20px;">Jobs Posted</div>
-				<button type="button" class="btn btn-primary" style="height: 40px; margin-top: 10px;" data-toggle="modal" data-target="#newSite">New Job</button>
-				<div class="modal fade" id="newSite" role="dialog" >
-					<div class="modal-dialog modal-lg">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h1 class="modal-title">Add New Job</h1>
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-							</div>
-							<div class="modal-body pr-33">
-								<%= render 'form_job', job: @job %>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	<div class="simple" >
+		<div class="container-fluid" style="padding:20px;">
+			<div class="d-flex flex-column justify-content-center align-items-left flex-1" >
+				<form class="search-form margin5" action="/dashboard" >
+					<input type="text" class="form-control" name="search" placeholder="Search" required>
+					<button type="submit"><i class="fa fa-search searchIcon"></i></button>
+				</form>
+		
+				<div class="inline">
+					<div class="font-weight-bold text-capitalize mb-3 mt-3" style="font-size: 20px;">Jobs Posted</div>
+					<button type="button" class="btn btn-primary" style="height: 40px; margin-top: 10px;" data-toggle="modal" data-target="#newSite">New Job</button>
+					<div class="modal fade" id="newSite" role="dialog" >
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title">Add New Job</h1>
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+								<div class="modal-body pr-33">
+									<%= render 'form_job', job: @job %>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<% @jobs.each do |job| %>
-				<div class="row justify-content-center align-items-center">
-					<div class="col-sm-10 mb-3 ">
-						<div class="card shadow p-3 mb-5 bg-white rounded">
-							<div class="card-body">
-								<h4 class="card-title"><%= job.title%></h4>
-								<p class="card-text"><%= job.description %></p>
-								<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample<%= job.id %>" aria-expanded="false" aria-controls="collapseExample<%= job.id %>">Show more</button>
-								<div class="collapse" id="collapseExample<%= job.id %>">
-									<p>
-										<strong>Salary:</strong>
-										<%= job.salary %>
-									</p>
+				<% @jobs.each do |job| %>
+					<div class="row justify-content-center align-items-center">
+						<div class="col-sm-10 mb-3 ">
+							<div class="card shadow p-3 mb-5 bg-white rounded">
+								<div class="card-body">
+									<h4 class="card-title"><%= job.title%></h4>
+									<p class="card-text"><%= job.description %></p>
+									<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample<%= job.id %>" aria-expanded="false" aria-controls="collapseExample<%= job.id %>">Show more</button>
+									<div class="collapse" id="collapseExample<%= job.id %>">
+										<p>
+											<strong>Salary:</strong>
+											<%= job.salary %>
+										</p>
 
-									<p>
-										<strong>Experience:</strong>
-										<%= job.experience %>
-									</p>
+										<p>
+											<strong>Experience:</strong>
+											<%= job.experience %>
+										</p>
 
-									<p>
-										<strong>Job location:</strong>
-										<%= job.job_location %>
-									</p>
+										<p>
+											<strong>Job location:</strong>
+											<%= job.job_location %>
+										</p>
 
-									<p>
-										<strong>Developer name:</strong>
-										<% job.job_seekers.each do |jobseeker|%>
-										<%= jobseeker.name%>
-										<% end %>
-									</p>
-									<%= link_to "Edit", edit_job_path(job), :type => "button", :class => "btn btn-primary", "data-toggle" => "modal", "data-target" => "#jobEdit#{job.id}" %>
-									<%= link_to 'Delete', job, method: :delete, :type => "button", :class => "btn btn-primary", data: { confirm: 'Are you sure?' } %>
-									<div class="modal fade" id="jobEdit<%= job.id %>" role="dialog" >
-										<div class="modal-dialog modal-lg">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h1 class="modal-title">Add New Job</h1>
-													<button type="button" class="close" data-dismiss="modal">&times;</button>
-												</div>
-												<div class="modal-body pr-33">
-													<%= render 'form_job', job: job %>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										<p>
+											<strong>Developer name:</strong>
+											<% job.job_seekers.each do |jobseeker|%>
+											<%= jobseeker.name%>
+											<% end %>
+										</p>
+										<%= link_to "Edit", edit_job_path(job), :type => "button", :class => "btn btn-primary", "data-toggle" => "modal", "data-target" => "#jobEdit#{job.id}" %>
+										<%= link_to 'Delete', job, method: :delete, :type => "button", :class => "btn btn-primary", data: { confirm: 'Are you sure?' } %>
+										<div class="modal fade" id="jobEdit<%= job.id %>" role="dialog" >
+											<div class="modal-dialog modal-lg">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h1 class="modal-title">Add New Job</h1>
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
+													</div>
+													<div class="modal-body pr-33">
+														<%= render 'form_job', job: job %>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -350,10 +329,9 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			<% end %>
+				<% end %>
+			</div>
 		</div>
 	</div>
-</div>
 
 <% end %>
