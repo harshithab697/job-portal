@@ -64,16 +64,16 @@ h6 {
 }
 
 .searchIcon{
-      border-radius: 20%;
+    border-radius: 20%;
     content: "\f002";
     border: 1px solid gray;
     padding: 5px;
 }
 
-.form-control{
+/*.form-control{
   margin-top: 20px !important;
   padding-top: 20px;
-}
+}*/
 
 .sidenav {
 min-height:100vh; /* Full-height: remove this if you want "auto" height */
