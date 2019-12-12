@@ -3,5 +3,5 @@ class Job < ApplicationRecord
 	has_many :job_applications
 	has_many :job_seekers, through: :job_applications
 
-	searchkick text_middle: [:title, :job_location, :salary, :experience]
+	searchkick text_middle: [:title]
 end

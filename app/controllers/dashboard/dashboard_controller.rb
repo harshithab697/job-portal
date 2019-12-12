@@ -1,7 +1,7 @@
 class Dashboard::DashboardController < ApplicationController
   def index
   	if current_user.instance_of?JobSeeker
-  		if params[:search] or params[:salary] or params[:experience] or params[:location] 
+  		if params[:search] or params[:salary] or params[:experience] or params[:location]
   			@jobs = Job.search(body: search_query.to_json).results
   			return @jobs 
   		end  		
@@ -65,7 +65,7 @@ class Dashboard::DashboardController < ApplicationController
     {
      wildcard: {
      	title: {
-       value: params[:search]
+       value: "*#{params[:search]}*"
      		}
    		}
     }

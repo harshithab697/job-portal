@@ -63,6 +63,10 @@ h6 {
   width: 90%;
 }
 
+.margin2{
+  margin-top: 5rem !important;
+}
+
 .searchIcon{
     border-radius: 20%;
     content: "\f002";
