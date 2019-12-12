@@ -7,17 +7,10 @@
 		<select class="btn button-custom btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="salary">
 			<div class="dropdown-menu">
 				<option value="none" selected disabled hidden class="dropdown-item"> 
-				Salary</option>              	
-				<option value="200000" class="dropdown-item"> 2 Lakhs </option>
-				<option value="400000" class="dropdown-item"> 4 Lakhs </option>
-				<option value="600000" class="dropdown-item"> 6 Lakhs </option>
-				<option value="800000" class="dropdown-item"> 8 Lakhs </option>
-				<option value="1000000" class="dropdown-item"> 10 Lakhs </option>
-				<option value="1200000" class="dropdown-item"> 12 Lakhs </option>
-				<option value="1400000" class="dropdown-item"> 14 Lakhs </option>
-				<option value="1600000" class="dropdown-item"> 16 Lakhs </option>
-				<option value="1800000" class="dropdown-item"> 18 Lakhs </option>
-				<option value="2000000" class="dropdown-item"> 20 Lakhs </option>	
+				Salary</option>
+				<% (1..10).each do |salary| %>
+					<option value="<%= salary*200000 %>" class="dropdown-item"> <%= salary*2 %> Lakhs </option>
+				<% end %>
 			</div>
 		</select>
 	</div>
@@ -26,12 +19,10 @@
 		<select class="btn button-custom btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="experience">
 			<div class="dropdown-menu" >
 				<option value="none" selected disabled hidden class="dropdown-item"> 
-				Experience </option>              	
-				<option value="2" class="dropdown-item"> 2 Years </option>
-				<option value="4" class="dropdown-item"> 4 Years </option>
-				<option value="6" class="dropdown-item"> 6 Years </option>
-				<option value="8" class="dropdown-item"> 8 Years </option>	
-				<option value="10" class="dropdown-item"> 10 Years </option>
+				Experience </option>
+				<% (1..5).each do |experience| %>
+					<option value="<%= experience*2 %>" class="dropdown-item"> <%= experience*2 %> Years </option>
+				<% end %>              	
 			</div>
 		</select>
 	</div> 
