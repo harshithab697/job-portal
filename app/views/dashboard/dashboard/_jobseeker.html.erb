@@ -163,53 +163,55 @@
 		</div>
 
 		<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-			<% @applied_jobs.each do |applied_job| %>
-				<div class="col-sm-12 mb-3 ">
-					<div class="card shadow p-3 mb-5 bg-white rounded">
-						<div class="card-body">
-							<h4 class="card-title"><%= applied_job.title %></h4>
-							<p class="card-text"><%= applied_job.description %></p>
-							<button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample<%= applied_job.id %>" aria-expanded="false" aria-controls="collapseExample<%= applied_job.id %>">Show more</button>
-							<br/>
-							<div class="collapse" id="collapseExample<%= applied_job.id %>">
+			<% if @applied_jobs %>
+				<% @applied_jobs.each do |applied_job| %>
+					<div class="col-sm-12 mb-3 ">
+						<div class="card shadow p-3 mb-5 bg-white rounded">
+							<div class="card-body">
+								<h4 class="card-title"><%= applied_job.title %></h4>
+								<p class="card-text"><%= applied_job.description %></p>
+								<button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample<%= applied_job.id %>" aria-expanded="false" aria-controls="collapseExample<%= applied_job.id %>">Show more</button>
 								<br/>
-								<p>
-									<strong>Salary:</strong>
-									<%= applied_job.salary %>
-								</p>
-								<p>
-									<strong>Experience:</strong>
-									<%= applied_job.experience %>
-								</p>
+								<div class="collapse" id="collapseExample<%= applied_job.id %>">
+									<br/>
+									<p>
+										<strong>Salary:</strong>
+										<%= applied_job.salary %>
+									</p>
+									<p>
+										<strong>Experience:</strong>
+										<%= applied_job.experience %>
+									</p>
 
-								<p>
-									<strong>Job location:</strong>
-									<%= applied_job.job_location %>
-								</p>
+									<p>
+										<strong>Job location:</strong>
+										<%= applied_job.job_location %>
+									</p>
 
-								<p>
-									<strong>Company name:</strong>
-									<%= applied_job.recruiter.cname %>
-								</p>
+									<p>
+										<strong>Company name:</strong>
+										<%= applied_job.recruiter.cname %>
+									</p>
 
-								<p>
-									<strong>Description:</strong>
-									<%= applied_job.recruiter.description %>
-								</p>
+									<p>
+										<strong>Description:</strong>
+										<%= applied_job.recruiter.description %>
+									</p>
 
-								<p>
-									<strong>Company location:</strong>
-									<%= applied_job.recruiter.clocation %>
-								</p>
+									<p>
+										<strong>Company location:</strong>
+										<%= applied_job.recruiter.clocation %>
+									</p>
 
-								<p>
-									<strong>Company size:</strong>
-									<%= applied_job.recruiter.csize %>
-								</p>
+									<p>
+										<strong>Company size:</strong>
+										<%= applied_job.recruiter.csize %>
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				<% end %>
 			<% end %>
 		</div>
 	</div>
