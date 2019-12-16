@@ -7,17 +7,10 @@
 		<select class="btn button-custom btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="salary">
 			<div class="dropdown-menu">
 				<option value="none" selected disabled hidden class="dropdown-item"> 
-				Salary</option>              	
-				<option value="200000" class="dropdown-item"> 2 Lakhs </option>
-				<option value="400000" class="dropdown-item"> 4 Lakhs </option>
-				<option value="600000" class="dropdown-item"> 6 Lakhs </option>
-				<option value="800000" class="dropdown-item"> 8 Lakhs </option>
-				<option value="1000000" class="dropdown-item"> 10 Lakhs </option>
-				<option value="1200000" class="dropdown-item"> 12 Lakhs </option>
-				<option value="1400000" class="dropdown-item"> 14 Lakhs </option>
-				<option value="1600000" class="dropdown-item"> 16 Lakhs </option>
-				<option value="1800000" class="dropdown-item"> 18 Lakhs </option>
-				<option value="2000000" class="dropdown-item"> 20 Lakhs </option>	
+				Salary</option>
+				<% (1..10).each do |salary| %>
+					<option value="<%= salary*200000 %>" class="dropdown-item"> <%= salary*2 %> Lakhs </option>
+				<% end %>
 			</div>
 		</select>
 	</div>
@@ -26,12 +19,10 @@
 		<select class="btn button-custom btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="experience">
 			<div class="dropdown-menu" >
 				<option value="none" selected disabled hidden class="dropdown-item"> 
-				Experience </option>              	
-				<option value="2" class="dropdown-item"> 2 Years </option>
-				<option value="4" class="dropdown-item"> 4 Years </option>
-				<option value="6" class="dropdown-item"> 6 Years </option>
-				<option value="8" class="dropdown-item"> 8 Years </option>	
-				<option value="10" class="dropdown-item"> 10 Years </option>
+				Experience </option>
+				<% (1..5).each do |experience| %>
+					<option value="<%= experience*2 %>" class="dropdown-item"> <%= experience*2 %> Years </option>
+				<% end %>              	
 			</div>
 		</select>
 	</div> 
@@ -41,7 +32,7 @@
 			<div class="dropdown-menu" >
 				<option value="none" selected disabled hidden class="dropdown-item"> 
 				Location </option>     
-				<%= options_for_select(Job.pluck(:job_location).uniq) %>         	
+				<%= options_for_select(@job_locations) %>         	
 			</div>
 		</select>
 	</div> 
@@ -52,58 +43,58 @@
 <% if params[:search] %>
 	<div class="row">
 		<% @jobs.each do |job| %>
-		<div class="col-sm-12 mb-3 ">
-			<div class="card shadow p-3 mb-5 bg-white rounded">
-				<div class="card-body">
-					<h4 class="card-title"><%= job.title %></h4>
-					<p class="card-text"><%= job.description %></p>
-					<button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample<%= job.id %>" aria-expanded="false" aria-controls="collapseExample<%= job.id %>">Show more</button>
-					<br/>
-					<div class="collapse" id="collapseExample<%= job.id %>">
+			<div class="col-sm-12 mb-3 ">
+				<div class="card shadow p-3 mb-5 bg-white rounded">
+					<div class="card-body">
+						<h4 class="card-title"><%= job.title %></h4>
+						<p class="card-text"><%= job.description %></p>
+						<button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample<%= job.id %>" aria-expanded="false" aria-controls="collapseExample<%= job.id %>">Show more</button>
 						<br/>
-						<p>
-							<strong>Salary:</strong>
-							<%= job.salary %>
-						</p>
+						<div class="collapse" id="collapseExample<%= job.id %>">
+							<br/>
+							<p>
+								<strong>Salary:</strong>
+								<%= job.salary %>
+							</p>
 
-						<p>
-							<strong>Experience:</strong>
-							<%= job.experience %>
-						</p>
+							<p>
+								<strong>Experience:</strong>
+								<%= job.experience %>
+							</p>
 
-						<p>
-							<strong>Job location:</strong>
-							<%= job.job_location %>
-						</p>
+							<p>
+								<strong>Job location:</strong>
+								<%= job.job_location %>
+							</p>
 
-						<p>
-							<strong>Company name:</strong>
-							<%= job.recruiter.cname %>
-						</p>
+							<p>
+								<strong>Company name:</strong>
+								<%= job.recruiter.cname %>
+							</p>
 
-						<p>
-							<strong>Description:</strong>
-							<%= job.recruiter.description %>
-						</p>
+							<p>
+								<strong>Description:</strong>
+								<%= job.recruiter.description %>
+							</p>
 
-						<p>
-							<strong>Company location:</strong>
-							<%= job.recruiter.clocation %>
-						</p>
+							<p>
+								<strong>Company location:</strong>
+								<%= job.recruiter.clocation %>
+							</p>
 
-						<p>
-							<strong>Company size:</strong>
-							<%= job.recruiter.csize %>
-						</p>
-						<% if JobApplication.where(job_seeker_id: current_user.id, job_id: job.id).present? %>
-						<strong> Already Applied</strong>
-						<% else %>
-						<%= link_to "Apply", apply_job_path(job), method: :patch, class: "btn btn-primary float-right" %>
-						<% end %>
+							<p>
+								<strong>Company size:</strong>
+								<%= job.recruiter.csize %>
+							</p>
+							<% if JobApplication.where(job_seeker_id: current_user.id, job_id: job.id).present? %>
+							<strong> Already Applied</strong>
+							<% else %>
+							<%= link_to "Apply", apply_job_path(job), method: :patch, class: "btn btn-primary float-right" %>
+							<% end %>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		<% end %>
 	</div>
 <% else %>
@@ -122,64 +113,9 @@
 				<div class="col-sm-12 mb-3">
 					<div class="card shadow p-3 mb-5 bg-white rounded">
 						<div class="card-body">
-							<h4 class="card-title"><%= Job.find(job).title %></h4>
-							<p class="card-text"><%= Job.find(job).description %></p>
-							<button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample<%= job %>" aria-expanded="false" aria-controls="collapseExample<%= job %>">Show more</button>
-							<br/>
-							<div class="collapse" id="collapseExample<%= job %>">
-								<br/>
-								<p>
-									<strong>Salary:</strong>
-									<%= Job.find(job).salary %>
-								</p>
-
-								<p>
-									<strong>Experience:</strong>
-									<%= Job.find(job).experience %>
-								</p>
-
-								<p>
-									<strong>Job location:</strong>
-									<%= Job.find(job).job_location %>
-								</p>
-
-								<p>
-									<strong>Company name:</strong>
-									<%= Job.find(job).recruiter.cname %>
-								</p>
-
-								<p>
-									<strong>Description:</strong>
-									<%= Job.find(job).recruiter.description %>
-								</p>
-
-								<p>
-									<strong>Company location:</strong>
-									<%= Job.find(job).recruiter.clocation %>
-								</p>
-
-								<p>
-									<strong>Company size:</strong>
-									<%= Job.find(job).recruiter.csize %>
-								</p>
-								<%= link_to "Apply", apply_job_path(job), method: :patch, class: "btn btn-primary float-right" %>
-							</div>
-						</div>
-					</div>
-				</div>
-				<% end %>
-			</div>
-		</div>
-
-		<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-			<% @applied_job.each do |applied_job| %>
-				<% job = Job.find(applied_job) %>
-				<div class="col-sm-12 mb-3 ">
-					<div class="card shadow p-3 mb-5 bg-white rounded">
-						<div class="card-body">
 							<h4 class="card-title"><%= job.title %></h4>
 							<p class="card-text"><%= job.description %></p>
-							<button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample<%= job.id %>" aria-expanded="false" aria-controls="collapseExample<%= job.id %>">Show more</button>
+							<button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample<%= job.id %>" aria-expanded="false" aria-controls="collapseExample<%= job %>">Show more</button>
 							<br/>
 							<div class="collapse" id="collapseExample<%= job.id %>">
 								<br/>
@@ -187,6 +123,7 @@
 									<strong>Salary:</strong>
 									<%= job.salary %>
 								</p>
+
 								<p>
 									<strong>Experience:</strong>
 									<%= job.experience %>
@@ -215,6 +152,59 @@
 								<p>
 									<strong>Company size:</strong>
 									<%= job.recruiter.csize %>
+								</p>
+								<%= link_to "Apply", apply_job_path(job), method: :patch, class: "btn btn-primary float-right" %>
+							</div>
+						</div>
+					</div>
+				</div>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+			<% @applied_jobs.each do |applied_job| %>
+				<div class="col-sm-12 mb-3 ">
+					<div class="card shadow p-3 mb-5 bg-white rounded">
+						<div class="card-body">
+							<h4 class="card-title"><%= applied_job.title %></h4>
+							<p class="card-text"><%= applied_job.description %></p>
+							<button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample<%= applied_job.id %>" aria-expanded="false" aria-controls="collapseExample<%= applied_job.id %>">Show more</button>
+							<br/>
+							<div class="collapse" id="collapseExample<%= applied_job.id %>">
+								<br/>
+								<p>
+									<strong>Salary:</strong>
+									<%= applied_job.salary %>
+								</p>
+								<p>
+									<strong>Experience:</strong>
+									<%= applied_job.experience %>
+								</p>
+
+								<p>
+									<strong>Job location:</strong>
+									<%= applied_job.job_location %>
+								</p>
+
+								<p>
+									<strong>Company name:</strong>
+									<%= applied_job.recruiter.cname %>
+								</p>
+
+								<p>
+									<strong>Description:</strong>
+									<%= applied_job.recruiter.description %>
+								</p>
+
+								<p>
+									<strong>Company location:</strong>
+									<%= applied_job.recruiter.clocation %>
+								</p>
+
+								<p>
+									<strong>Company size:</strong>
+									<%= applied_job.recruiter.csize %>
 								</p>
 							</div>
 						</div>

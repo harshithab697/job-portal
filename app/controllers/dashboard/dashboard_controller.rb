@@ -1,29 +1,14 @@
 class Dashboard::DashboardController < ApplicationController
   def index
-  	if current_user.instance_of?JobSeeker
-  		if params[:search] or params[:salary] or params[:experience] or params[:location]
-  			@jobs = Job.search(body: search_query.to_json).results
-  			return @jobs 
-  		end  		
-			@applied_job = [ ]
-			@all_jobs = Job.pluck(:id) 
-			jobs = JobApplication.where(job_seeker_id: current_user.id)
-			jobs.each do |job|
-				@applied_job << job.job_id
-			end
-			if @applied_job.empty?
-				return @all_jobs
-			else
-				@all_jobs -= @applied_job
-				return @all_jobs
-			end
-		else
-      @job = Job.new
-			if params[:search]
-				@jobs = Job.where("title LIKE ?","%#{params[:search]}%")
-			else
-				@jobs = Job.where(recruiter_id: current_user.id)
-		  end
+    @job_locations = Job.pluck(:job_location).uniq
+    @job = Job.new
+		if params[:search] or params[:salary] or params[:experience] or params[:location]
+			@jobs = Job.search(body: search_query.to_json).results
+      @recruiter_jobs = Job.where("title LIKE ?","%#{params[:search]}%")
+    else
+      @applied_jobs = Job.joins(:job_seekers).map{|job| job if job.job_seekers.ids.include?(1)}
+      @all_jobs = Job.all.to_a - @applied_jobs
+      @recruiter_jobs = Job.where(recruiter_id: current_user.id)
 		end
   end
 
