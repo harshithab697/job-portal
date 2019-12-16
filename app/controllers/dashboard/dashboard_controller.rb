@@ -4,9 +4,9 @@ class Dashboard::DashboardController < ApplicationController
     @job = Job.new
 		if params[:search] or params[:salary] or params[:experience] or params[:location]
 			@jobs = Job.search(body: search_query.to_json).results
-      @recruiter_jobs = Job.where("title LIKE ?","%#{params[:search]}%")
+      @recruiter_jobs = Job.where(recruiter_id: current_user.id).where("title LIKE ?","%#{params[:search]}%")
     else
-      @applied_jobs = Job.joins(:job_seekers).map{|job| job if job.job_seekers.ids.include?(1)}
+      @applied_jobs = Job.joins(:job_seekers).map{|job| job if job.job_seekers.ids.include?(current_user.id)}
       @all_jobs = Job.all.to_a - @applied_jobs
       @recruiter_jobs = Job.where(recruiter_id: current_user.id)
 		end
