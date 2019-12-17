@@ -52,7 +52,7 @@
 							<div class="font-weight-bold text-capitalize mb-3 mt-3" style="font-size: 20px;">Developer Name:</div>
 							<% job.job_seekers.each do |jobseeker|%>
 							<div class="inline">
-								<button type="button" class="btn btn-primary" style="height: 40px; margin-top: 10px;" data-toggle="modal" data-target="#developer"><%= jobseeker.name%></button>
+								<a data-toggle="modal" data-target="#developer" href="#"><%= jobseeker.name%></a>
 								<div class="modal fade" id="developer" role="dialog" >
 									<div class="modal-dialog modal-lg">
 										<div class="modal-content">
