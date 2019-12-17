@@ -6,7 +6,7 @@ class Dashboard::DashboardController < ApplicationController
 			@jobs = Job.search(body: search_query.to_json).results
       @recruiter_jobs = Job.where(recruiter_id: current_user.id).where("title LIKE ?","%#{params[:search]}%")
     else
-      @applied_jobs = Job.joins(:job_seekers).map{|job| job if job.job_seekers.ids.include?(current_user.id)}.uniq
+      @applied_jobs = Job.joins(:job_seekers).map{|job| job if job.job_seekers.ids.include?(current_user.id)}.compact.uniq
       @all_jobs = Job.all.to_a - @applied_jobs
       @recruiter_jobs = Job.where(recruiter_id: current_user.id)
 		end
