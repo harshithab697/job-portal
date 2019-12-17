@@ -31,8 +31,9 @@
 				<div class="card-body">
 					<h4 class="card-title"><%= job.title%></h4>
 					<p class="card-text"><%= job.description %></p>
-					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample<%= job.id %>" aria-expanded="false" aria-controls="collapseExample<%= job.id %>">Show more</button>
-					<div class="collapse" id="collapseExample<%= job.id %>">
+					<button onclick="toggle()" class="btn btn-primary" type="button" id="myBtn">Show more</button>
+					<div id="dots"></div>
+					<div id="more">
 						<p>
 							<strong>Salary:</strong>
 							<%= job.salary %>
@@ -49,9 +50,42 @@
 						</p>
 
 						<p>
-							<strong>Developer name:</strong>
+							<div class="font-weight-bold text-capitalize mb-3 mt-3" style="font-size: 20px;">Developer Name:</div>
 							<% job.job_seekers.each do |jobseeker|%>
-							<%= jobseeker.name%>
+								<div class="inline">
+									<a data-toggle="modal" data-target="#developer" href="#"><%= jobseeker.name%></a>
+									<div class="modal fade" id="developer" role="dialog" >
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h1 class="modal-title"><%= jobseeker.name%></h1>
+													<button type="button" class="close" data-dismiss="modal">&times;</button>
+												</div>
+												<div class="modal-body pr-33">
+													<div class="form-group">
+														<%=  :Email%>
+														<%= jobseeker.email %>
+													</div>
+													<div class="form-group">
+														<%=  :Qualification %>
+														<%= jobseeker.qualification %>
+													</div>
+													<div class="form-group">
+														<%=  :Skills %>
+														<%= jobseeker.skills %>
+													</div>
+													<div class="form-group">
+														<%=  :Experience %>
+														<%= jobseeker.experience %>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							<% end %>
 						</p>
 						<%= link_to "Edit", edit_job_path(job), :type => "button", :class => "btn btn-primary", "data-toggle" => "modal", "data-target" => "#jobEdit#{job.id}" %>
@@ -78,3 +112,25 @@
 		</div>
 	</div>
 <% end %>
+
+<style>
+#more {display: none;}
+</style>
+
+<script>
+  const toggle = () => {
+    var dots = document.getElementById("dots");
+    var moreText = document.getElementById("more");
+    var btnText = document.getElementById("myBtn");
+
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Show more";
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Show less";
+      moreText.style.display = "inline";
+    }
+  }
+</script>
