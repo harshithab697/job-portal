@@ -1,6 +1,6 @@
 <form class="search-form margin5" action="/dashboard" >
 	<input type="text" class="form-control" name="search" placeholder="Search" required>
-	<button type="submit"><i class="fa fa-search searchIcon"></i></button>
+	<button type="submit" style="margin-top: -12px;"><i class="fa fa-search searchIcon"></i></button>
 </form>
 
 <div class="inline">
@@ -31,8 +31,9 @@
 				<div class="card-body">
 					<h4 class="card-title"><%= job.title%></h4>
 					<p class="card-text"><%= job.description %></p>
-					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample<%= job.id %>" aria-expanded="false" aria-controls="collapseExample<%= job.id %>">Show more</button>
-					<div class="collapse" id="collapseExample<%= job.id %>">
+					<button onclick="toggle()" class="btn btn-primary" type="button" id="<%= job.id %>" data-toggle="collapse" data-target="#dots">Show more</button>
+					<div id="dots"></div>
+					<div id="more">
 						<p>
 							<strong>Salary:</strong>
 							<%= job.salary %>
@@ -105,9 +106,32 @@
 								</div>
 							</div>
 						</div>
+					<script>
+					  const toggle = () => {
+					    var dots = document.getElementById("dots");
+					    var moreText = document.getElementById("more");
+					    var btnText = document.getElementById('<%= job.id %>');
+
+					    if (dots.style.display === "none") {
+					      dots.style.display = "inline";
+					      btnText.innerHTML = "Show more";
+					      moreText.style.display = "none";
+					    } else {
+					      dots.style.display = "none";
+					      btnText.innerHTML = "Show less";
+					      moreText.style.display = "inline";
+					    }
+					  }
+					</script>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 <% end %>
+
+<style>
+	#more {
+		display: none;
+	}
+</style>

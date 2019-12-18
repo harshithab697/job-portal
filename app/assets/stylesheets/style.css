@@ -68,10 +68,10 @@ h6 {
 }
 
 .searchIcon{
-    border-radius: 20%;
-    content: "\f002";
-    border: 1px solid gray;
-    padding: 5px;
+  border-radius: 20%;
+  content: "\f002";
+  border: 1px solid gray;
+  padding: 5px;
 }
 
 /*.form-control{
