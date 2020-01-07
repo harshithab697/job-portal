@@ -31,9 +31,8 @@
 				<div class="card-body">
 					<h4 class="card-title"><%= job.title%></h4>
 					<p class="card-text"><%= job.description %></p>
-					<button onclick="toggle()" class="btn btn-primary" type="button" id="<%= job.id %>" data-toggle="collapse" data-target="#dots">Show more</button>
-					<div id="dots"></div>
-					<div id="more">
+					<button onclick="changeText()" class="btn btn-primary" id="toggle<%= job.id %>" type="button" data-toggle="collapse" data-target="#collapseExample<%= job.id %>" aria-expanded="false" aria-controls="collapseExample<%= job.id %>">Show More</button>
+					<div class="collapse" id="collapseExample<%= job.id %>">
 						<p>
 							<strong>Salary:</strong>
 							<%= job.salary %>
@@ -128,10 +127,13 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		function changeText(){
+			if (document.getElementById("toggle<%= job.id %>").innerHTML == "Show More") {
+				document.getElementById("toggle<%= job.id %>").innerHTML = "Show Less";
+			}else {
+				document.getElementById("toggle<%= job.id %>").innerHTML = "Show More";
+			}
+		}
+	</script>
 <% end %>
-
-<style>
-	#more {
-		display: none;
-	}
-</style>
