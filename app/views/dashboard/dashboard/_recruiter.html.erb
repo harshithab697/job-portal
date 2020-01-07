@@ -1,6 +1,6 @@
 <form class="search-form margin5" action="/dashboard" >
 	<input type="text" class="form-control" name="search" placeholder="Search" required>
-	<button type="submit"><i class="fa fa-search searchIcon"></i></button>
+	<button type="submit" style="margin-top: -12px;"><i class="fa fa-search searchIcon"></i></button>
 </form>
 
 <div class="inline">
@@ -105,6 +105,23 @@
 								</div>
 							</div>
 						</div>
+					<script>
+					  const toggle = () => {
+					    var dots = document.getElementById("dots");
+					    var moreText = document.getElementById("more");
+					    var btnText = document.getElementById('<%= job.id %>');
+
+					    if (dots.style.display === "none") {
+					      dots.style.display = "inline";
+					      btnText.innerHTML = "Show more";
+					      moreText.style.display = "none";
+					    } else {
+					      dots.style.display = "none";
+					      btnText.innerHTML = "Show less";
+					      moreText.style.display = "inline";
+					    }
+					  }
+					</script>
 					</div>
 				</div>
 			</div>
